@@ -3,12 +3,22 @@
   <head>
     <meta charset="UTF-8">
     <title>InnerCity Projects</title>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="development/scripts/jquery.sticky.js"></script>
+      <script src="development/scripts/script.js"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
   </head>
   <body>
+    <div class="side-nav">
+      <ul>
+        <li id="about2">About</li>
+        <li id="works2">Works</li>
+        <li id="news2">News</li>
+        <li id="contact2">Contact</li>
+      </ul>
+    </div>
     <div class="main-wrapper">
-        <div class="hamburger">
+        <div id="hamburger">
             <div id="ham-1" class="hams"></div>
             <div id="ham-2" class="hams"></div>
         </div>
@@ -21,16 +31,20 @@
                     A series of site-specific projects by Miriam Parker and Jo Wood Brown that bridge the mediums of liveness and permanence
                 </div>
             </div>
-            <div class="nav">
-                <ul>
-                    <li>About</li>
-                    <li>Works</li>
-                    <li>News</li>
-                    <li>Contact</li>
-                </ul>
+            <div class="sticky-wrapper" id="undefined-sticky-wrapper">
+<!--                <div class="menu">-->
+                    <div class="nav">
+                        <ul>
+                            <li id="about">About</li>
+                            <li id="works">Works</li>
+                            <li id="news">News</li>
+                            <li id="contact">Contact</li>
+                        </ul>
+                    </div>
+<!--                </div>-->
             </div>
         </div>
-        <div class="about-sec">
+        <div class="about-sec" id="about-anchor">
             <div class="first-section-about">
                 <p>
                 Through works that stage paintings, video, installation and choreographies of presence, InnerCity explores the state of being in-between destinations and how our mind and body can be present in two different places at the same time.
@@ -42,6 +56,106 @@
                 </p>
             </div>
         </div>
+        <div class="works-sec" id="works-anchor">
+            <ul class="works">
+                <div class="h2">Installations</div>
+                <li class="work-1">
+                    <h2>Light Rain</h2>
+                    <h4>2015</h4>
+                </li>
+                <li class="work-2">
+                    <h2>The Station</h2>
+                    <h4>2014-2015</h4>
+                </li>
+                <li class="work-3">
+                    <h2>Incubatio Installation</h2>
+                    <h4>2013</h4>
+                </li>
+                <li class="work-5">
+                    <h2>Inner City: Studio Installation</h2>
+                    <h4>2011</h4>
+                </li>
+                <li class="work-6">
+                    <h2>Inner City: Studio Dance Performance</h2>
+                    <h4>2011</h4>
+                </li>
+                <li class="work-7">
+                    <h2>Inner City: City to City</h2>
+                    <h4>Ongoing</h4>
+                </li>
+            </ul>
+            <ul class="works">
+                <div class="h2">Video</div>
+                <li class="work-4">
+                    <h2>Incubatio</h2>
+                    <h4>2012</h4>
+                </li>
+            </ul>
+            <ul class="works">
+                <div class="h2">Paintings</div>
+                <li class="work-8">
+                    <h2>Inner City: Painted Stills and Paintings</h2>
+                    <h4>2011-2013</h4>
+                </li>
+                <li class="work-9">
+                    <h2>Crow Series: Painted Stills and Paintings</h2>
+                    <h4>2008-2011</h4>
+                </li>
+            </ul>
+            <ul class="works">
+                <div class="h2">Early Performances</div>
+                <li class="work-10">
+                    <h2>Crow Series: 7 Wands</h2>
+                    <h4>2010</h4>
+                </li>
+                <li class="work-11">
+                    <h2>Crow Series: As the Crow Flies</h2>
+                    <h4>2009</h4> 
+                </li>
+                <li class="work-12">
+                    <h2>Crow Series: Crow Construction</h2>
+                    <h4>2009</h4>
+                </li>
+                <li class="work-13">
+                    <h2>Apkallu</h2>
+                    <h4>2008-2011</h4>
+                </li>
+                <li class="work-14">
+                    <h2>Three Tiers</h2>
+                    <h4>2007</h4>
+                </li>
+                <li class="work-15">
+                    <h2>Making Line</h2>
+                    <h4>1982-1985</h4>
+                </li>
+            </ul>
+        </div>
+        <div class="news-sec" id="news-anchor">
+            <div class="news-text">
+                <h1>Upcoming Events</h1>
+                <h4>InnerCityProjects is doing this on this date. Tickets available here. Come join us!</h4>
+                <a href="http://innercityprojects.tumblr.com/">See Events Archive</a>
+            </div>
+        </div>
+        <div class="contact-sec" id="contact-anchor">
+            <div class="contact-text">
+                Inner City<br>
+                499 Broadway #4<br>
+                10012 New York, NY<br>
+                917 761 4078
+                <br><br>
+                miriamsparker@gmail.com
+                <br>
+                jowoodbrown@gmail.com
+            </div>
+        </div>
     </div>
+    <footer>
+        <script>
+            $(window).load(function() {
+                $('.nav').sticky({ topSpacing: 0})
+            });
+        </script>
+    </footer>
   </body>
 </html>
