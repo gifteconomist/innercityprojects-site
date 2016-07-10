@@ -2,6 +2,7 @@ $iphone-5: 320px;
 $iphone-6: 375px;
 $iphone-6-plus: 414px;
 $break-med: 700px;
+$break-med-large: 900px;
 $break-large: 1200px;
 $w: #fff;
 $b: #111;
@@ -20,11 +21,13 @@ html, body {
 }
 
 .main-wrapper.move {
-    left:-200px;
     transition: all ease .3s;
-    
+    transform: translateX(-200px);
+    position: fixed;
     @media screen and (min-width: $iphone-6-plus) {
-        left: 0;
+      position: relative;
+      transition: all ease .3s;
+      transform: translateX(0px);
     }
 }
 
@@ -93,36 +96,46 @@ html, body {
         margin: 7px 0;
         background: white;
     }
-    
-    .hams.show {
-        background: #111;
-        
-        @media screen and (min-width: $iphone-6-plus) {
-            background: white;
-        }
-    }
+//    
+//    .hams.show {
+//        background: #111;
+//        
+//        @media screen and (min-width: $iphone-6-plus) {
+//            background: white;
+//        }
+//    }
     
     @media screen and (max-width: $iphone-6-plus) {
         display: block;
     }
     
-    #ham-1 {
+    .ham-1 {
        transition-timing-function: ease;
        transition: transform 0.4s ease;
    }
-   #ham-2 {
+   .ham-2 {
        transition-timing-function: ease;
        transition: transform 0.4s ease;
    }
 }
 
+#hamburger-works {
+  @extend #hamburger;
+  
+  display: block;
+}
+
 .ham-open {
-    #ham-1 {
+//  
+//  transform: translateX(200px);
+//  transition: transform 0.15s linear;
+  
+    .ham-1 {
        transform: rotateZ(45deg) translate(4px, 3px);
        transition-timing-function: ease;
        transition: transform 0.4s ease;
    }
-   #ham-2 {
+   .ham-2 {
        transform: rotateZ(-45deg) translate(4px, -3px);
        transition-timing-function: ease;
        transition: transform 0.4s ease;
@@ -133,7 +146,7 @@ html, body {
 
 .side-nav {
     right: -200px;
-    top:0;
+    top:0; 
     bottom:0;
     position:fixed;
     width:200px;
@@ -211,8 +224,14 @@ html, body {
         color: #ffffff;
         font-family: Times;
         text-align: center;
-        padding: 14px 200px;
+        padding: 14px 400px;
         line-height: 1.75;
+        @media screen and (max-width: $break-large) {
+                padding: 14px 300px;
+        }
+        @media screen and (max-width: $break-med-large) {
+                padding: 14px 200px;
+        }
         @media screen and (max-width: $break-med) {
                 padding: 14px 100px;
         }
@@ -232,19 +251,23 @@ html, body {
 
 .about-sec {
     width: 100%;
-    height: 100vh;
+    height: 200vh;
     
     .first-section-about {
         display: flex;
+        flex-direction: column;
         width: 100%;
-        height: 50%;
+        height: 25%;
         background: #ffffff;
         justify-content: center;
         
-        .h2 {
-            color: #111111;
-            font-family: Times;
-        }
+        span {
+        font-size: 3em;
+        padding: 0px 10px 0 0;
+        color:$b;
+        margin-top: 0;
+        font-size: 1.75em;
+      }
         
         p {
             padding: 10px 300px;
@@ -264,11 +287,31 @@ html, body {
                 padding: 10px 60px;
             }
         }
+      .about-p {
+        padding-top: 0;
+        padding-bottom: 0;
+        font-size: 2.7em;
+        z-index: 1;
+        @media (max-width: 1000px) {
+          font-size: 2.5em;
+          padding: 10px 120px;
+        }
+        @media screen and (max-width: $break-med) {
+            padding: 10px 60px;
+        }
+        @media screen and (max-width: $iphone-6-plus) {
+            padding: 10px 30px;
+        }
+        @media (max-width: 400px) {
+          font-size: 2.3em
+        }
+      }
     } 
     .second-section-about {
         display: flex;
+        flex-direction: column;
         width: 100%;
-        height: 50%;
+        height: 25%;
         background: #111111;
         justify-content: center;
         
@@ -291,7 +334,35 @@ html, body {
                 padding: 10px 60px;
             }
         }
-    } 
+      
+      span {
+        margin-top: 0;
+        font-size: 3em;
+        padding: 0px 10px;
+        color:white;
+        font-size: 1.75em;
+      }
+      
+      .about-p {
+        padding-top: 0;
+        padding-bottom: 0;
+        font-size: 2.7em;
+        @media (max-width: 1000px) {
+          font-size: 2.5em;
+          padding: 10px 120px;
+        }
+        @media screen and (max-width: $break-med) {
+            padding: 10px 60px;
+        }
+        @media screen and (max-width: $iphone-6-plus) {
+            padding: 10px 30px;
+        }
+        @media (max-width: 400px) {
+          font-size: 2.3em
+        }
+      }
+    }
+
 }
 
 /////Works
@@ -314,7 +385,7 @@ html, body {
             padding: 0 0 0 15px;
         }    
         
-        li {
+         a {
             height: 50vh;
             flex-grow: 1;
             width: calc(33.33% - 20px); 
@@ -323,6 +394,16 @@ html, body {
             color: $w;
             background-size: cover !important;
             background-repeat: no-repeat !important;
+            text-decoration: none;
+            
+           &:hover {
+            transform: scale(1.02);
+            transition: transform .2s ease;
+           }
+             
+            li {
+                height: 50vh;
+            }
             
             h2, h4 {
                 text-align: right;
@@ -347,7 +428,7 @@ html, body {
             background: url(../../assets/images/the-station.jpg);
         }
         .work-3 {
-            background: url(../../assets/images/incabatio-installation.jpg);
+            background: url(../../assets/images/incubatio-installation.jpg); 
         }
         .work-4 {
             background: url(../../assets/images/incubatio.jpg);   
@@ -363,14 +444,14 @@ html, body {
         }
         .work-8 {
             background: url(../../assets/images/ic-painted-stils.jpg);
-            background-size:50vw 70vh;
+            background-size:125%;
 //            background-position: -60px -50px;
 //            background-size: cover;
             background-repeat: no-repeat;
         }
         .work-9 {
             background: url(../../assets/images/painted-stills.jpg);
-            background-size:50vw 70vh;
+            background-size:125%;
 //            background-position: -80px -50px;
 //            background-size: cover;
             background-repeat: no-repeat;
@@ -403,22 +484,73 @@ html, body {
     height: 100vh;
     display: flex;
     justify-content: center;
-    background: #fff;
-    
-    .news-text {
-        align-self: center;
-        text-align: center;
-    }
+    position: relative;
+    background-color: #fff;
+    background-image: url(../../assets/images/oasis.png);
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: 93% 90%;
     
     h1 {
         font-size: 5em;
+        padding: 0 0 0 35px;
+        margin: 0;
+        display: inline-block;
+        position: absolute;
+        left: 0;
     }
+    
+    .news-text {
+        padding: 100px;
+        text-align: left;
+        
+        
+        @media screen and (max-width: 800px) {
+            padding: 75px;
+        }
+        @media screen and (max-width: 600px) {
+            padding: 50px;
+        }
+        @media screen and (max-width: 400px) {
+            padding: 50px 30px;
+        }
+    }
+    
     h4 {
-        font-size: 3em;
+        font-size: 4.5em;
+        font-style: italic;
+        @media screen and (max-width: 500px) {
+            font-size: 3.8em;
+        }
+        @media screen and (max-width: 400px) {
+            font-size: 3.5em;
+        }
     }
-    a {
+    h6 {
+        font-size: 3em;
+        margin: 0;
+        font-weight: 100;
+        @media screen and (max-width: 500px) {
+            font-size: 2.5em;
+        }
+        @media screen and (max-width: 400px) {
+            font-size: 2.3em;
+        }
+    }
+    p {
         font-size: 3.2em;
         text-decoration: none;
+        @media screen and (max-width: 500px) {
+            font-size: 2.8em;
+        }
+        @media screen and (max-width: 400px) {
+            font-size: 2.6em;
+        }
+    }
+    
+    h4,h6,p {
+        mix-blend-mode: difference;
+        color: #fff;
     }
 }
 
@@ -436,5 +568,200 @@ html, body {
         color: $w;
     }
     
+}
+
+////////works detail
+
+.main-wrapper-works {
+    @extend .main-wrapper;
+    
+    #hamburger {
+        display: block;
+    }
+}
+
+.works-detail {
+    
+    & {
+        padding: 70px 150px;
+        background: #fff;
+      
+      @media (max-width: $break-large) {
+        padding: 70px 125px;
+        background: #fff;
+      }
+      
+      @media (max-width: 850px) {
+        padding: 70px 70px;
+      }
+      
+      @media (max-width: $break-med) {
+        padding: 50px;
+      }
+      
+      @media (max-width: $iphone-6) {
+        padding: 50px 20px;
+      }
+    
+    }
+    
+    &__title {
+        h1 {
+            font-size: 5em;
+            margin: 10px 0;
+            letter-spacing: 0.05em;
+            font-style: italic;
+        }
+        p {
+            font-size: 3em;
+            margin: 0;
+        }
+    }
+    
+    &__main-image {
+        
+        & {
+            padding: 40px 0;    
+        }
+        
+        img {
+            width: 100%;
+        }
+    }
+    
+    &__text {
+        p {
+            font-size: 3em;
+            margin: 10px;
+            line-height: 1.3;
+            padding: 0 10px;
+            letter-spacing: 0.01em;
+        }
+    }   
+    
+    &__images {
+        & {
+            padding: 40px 0;
+        }
+        img {
+            width: 100%;
+            padding: 20px 0;
+        }
+    }
+    
+    &__next-work {
+        & {
+            display: flex;
+            justify-content: center;
+        }
+        img {
+            width: 40px;
+        }
+        a {
+            text-decoration: none;
+            color: #111;
+            font-size: 2.5em;
+            font-style: italic;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            text-align: center;
+          
+          &:first-child {
+            margin-right: 40px;
+          }
+        }
+      
+    }
+       
+}
+
+#hamburger {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    mix-blend-mode: difference;
+    cursor: pointer;
+
+    .hams {
+        width: 35px;
+        height: 3px;
+        margin: 7px 0;
+        background: white;
+    }
+
+    #ham-1 {
+       transition-timing-function: ease;
+       transition: transform 0.4s ease;
+   }
+   #ham-2 {
+       transition-timing-function: ease;
+       transition: transform 0.4s ease;
+   }
+}
+
+.side-nav-works {
+    right: -200px;
+    top:0;
+    bottom:0;
+    position: absolute;
+    width:200px;
+    padding: 30px 20px;
+    transition: all ease .3s;
+    z-index: 0;
+    background: #ccc !important;
+    
+    ul {
+        list-style-type: none;
+        font-size: 3.5em;
+        margin: 0;
+        li {
+            padding: 7px 0;
+            cursor: pointer; 
+            color: $w;
+          
+          a {
+            text-decoration: none;
+            color: $w;
+          }
+        }
+      
+        .works-mobile-li {
+          border-bottom: 1px solid $b;
+        }
+    }
+    
+    .works-nav {
+        padding: 10px 0 20px 0;
+        
+        &-li {
+            font-size: 14px;
+//            font-style: italic;
+            padding: 5px 0;
+        }
+        
+        a {
+            text-decoration: none;
+            color: black;
+            
+            &:hover {
+                color: #ccc;
+            }
+        }
+    }
+}
+
+.side-nav-works.show {
+    right:0;
+    background: #ccc !important;
+    overflow: scroll;
+}
+
+.main-wrapper-works.move {
+//    left:-200px;
+  
+    transform: translateX(-200px);
+    transition: all ease .3s;
+    position: fixed;
 }
  

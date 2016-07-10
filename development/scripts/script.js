@@ -1,9 +1,15 @@
+$(window).load(function() {
+    $('.nav').sticky({ topSpacing: 0})
+});
+
 $(document).ready(function() {
     //hamburger
-    $('#hamburger').click(function() {
-      $('#hamburger').toggleClass("ham-open");
+    $('#hamburger, #hamburger-works').click(function() {
+      $(this).toggleClass("ham-open");
       $('.side-nav').toggleClass('show');
+      $('.side-nav-works').toggleClass('show');
       $('.main-wrapper').toggleClass('move');
+      $('.main-wrapper-works').toggleClass('move');
       $('.hams').toggleClass('show')
     });
     
